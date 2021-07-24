@@ -36,36 +36,6 @@ public class Util {
 
     // -----------------------------> Hibernate <--------------------------------
 
-//    private static final StandardServiceRegistry standardServiceRegistry;
-//    private static final SessionFactory sessionFactory;
-//
-//    static {
-//        StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder();
-//
-//        Map<String, String> dbSettings = new HashMap<>();
-//        dbSettings.put(Environment.URL, URL);
-//        dbSettings.put(Environment.USER, LOGIN);
-//        dbSettings.put(Environment.PASS, PASSWORD);
-//        dbSettings.put(Environment.DRIVER, DRIVER);
-//        dbSettings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
-//
-//        //Apply database settings
-//        registryBuilder.applySettings(dbSettings);
-//        //Creating registry
-//        standardServiceRegistry = registryBuilder.build();
-//        //Creating MetadataSource
-//        MetadataSources sources = new MetadataSources(standardServiceRegistry);
-//        //Creating Metadata
-//        Metadata metadata = sources.getMetadataBuilder().build();
-//        //Creating SessionFactory
-//        sessionFactory = metadata.getSessionFactoryBuilder().build();
-//    }
-//
-//    //Utility method to return SessionFactory
-//    public static SessionFactory getSessionFactory() {
-//        return sessionFactory;
-//    }
-
     private static SessionFactory sessionFactory;
     public static SessionFactory getSessionFactory () {
         if (sessionFactory == null) {
