@@ -1,6 +1,5 @@
 package jm.task.core.jdbc.dao;
 
-import jm.task.core.jdbc.Main;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 
@@ -16,23 +15,22 @@ public class UserDaoJDBCImpl implements UserDao {
     public UserDaoJDBCImpl() {
     }
 
-    public void createUsersTable() {
-
+    public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
 
-            statement.execute("CREATE TABLE IF NOT EXISTS users (id INT(11) " +
-                    "NOT NULL PRIMARY KEY AUTO_INCREMENT, " +
-                    "name VARCHAR(30), lastName VARCHAR(30), age TINYINT(4))");
-
+            statement.execute("DROP TABLE IF EXISTS users");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    public void dropUsersTable() {
+    public void createUsersTable() {
+
         try (Statement statement = connection.createStatement()) {
 
-            statement.execute("DROP TABLE IF EXISTS users");
+            statement.execute("CREATE TABLE IF NOT EXISTS User (id INT(11) " +
+                    "NOT NULL PRIMARY KEY AUTO_INCREMENT, " +
+                    "name VARCHAR(30), lastName VARCHAR(30), age TINYINT(4))");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -42,7 +40,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
 
         try (PreparedStatement preparedStatement =
-                     connection.prepareStatement("INSERT users SET NAME=?, LASTNAME=?, AGE=?")) {
+                     connection.prepareStatement("INSERT User SET NAME=?, LASTNAME=?, AGE=?")) {
 
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
@@ -102,3 +100,8 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 }
+
+
+
+
+
